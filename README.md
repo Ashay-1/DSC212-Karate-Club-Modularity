@@ -1,46 +1,65 @@
-DSC212 Research Assignment: Modularity on the Karate Club Graph
-Course: DSC212 - Graph Theory Module
-Student Name: Satyam Vedant
-Roll Number: IMS24216
-Date: November 20, 2025
+# Karate Modularity Assignment
 
-Assignment Overview
-This repository contains a complete implementation of recursive spectral modularity partitioning for community detection on the famous Karate Club social network. The assignment implements the spectral bipartition algorithm from scratch, visualizes community evolution, and tracks how centrality metrics change across iterations.
+Author: Satyam Vedant
+Roll No.: IMS24216
+Date: 20-11-2025
 
-Objectives
-Implement recursive spectral modularity partitioning from scratch
+## Overview
 
--Detect multiple communities in the Karate Club graph
+This repository delivers a single, self-contained Jupyter notebook that implements recursive spectral modularity partitioning on Zachary's Karate Club network. The notebook performs the analysis end-to-end: it computes modularity-driven splits, records community assignments at each accepted split, and computes common node-level network metrics (degree centrality, betweenness, closeness, clustering coefficient) across iterations for longitudinal inspection.
 
--Visualize the graph after each split with different colors for communities
+## Scientific motivation
 
--Compute node metrics (degree, betweenness, closeness, clustering centrality)
+Community detection is a central problem in network science. Modularity measures how well a partition concentrates edges within groups relative to a random-graph baseline. The leading-eigenvector (spectral) approach finds bipartitions that locally improve modularity. Recursively applying this bipartitioning yields a hierarchical decomposition and an interpretable sequence of community refinements. Tracking node-level metrics through the recursion helps identify core versus boundary nodes and how node roles change as communities split.
 
--Plot metric evolution across iterations
+## What the notebook implements
 
--Analyze which nodes remain central and how community structure influences metrics
+- Construction of the modularity matrix for a candidate node set, using degrees measured on the full network.
+- Computation of the principal eigenvector of the modularity matrix and bipartition by the sign of its entries.
+- Calculation of modularity gain ΔQ = (1/(4m)) sᵀ B s for the sign split; acceptance only when ΔQ > 0 and both parts are non-empty.
+- Recursive splitting until no positive-gain splits remain (with an adjustable minimum part size parameter).
+- Per-iteration recording of community assignments and node-level metrics for longitudinal analysis.
+- Visualizations of the network colored by community assignment at each accepted split (embedded in the notebook).
 
--> Repository Structure
-text
-.
-├── DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb  # Main Jupyter notebook
-  ├── iteration_*.png                                  # Community visualization plots 
-  ├── *_evolution.png                                  # Metric evolution plots
-  └── *_heatmap.png                                   # Metric heatmaps
-├── README.md                                        # This file
+## Reproducible instructions
 
-Requirements
-Python Libraries
-bash
-pip install networkx numpy matplotlib
-Required packages:
+1. Open a terminal in the repository root.
 
-networkx (>= 2.5)
+2. Create and activate a Python virtual environment, then install dependencies:
+   - python -m venv .venv
+   - source .venv/bin/activate    # macOS / Linux
+   - .venv\Scripts\activate       # Windows (PowerShell)
+   - pip install -r requirements.txt
 
-numpy (>= 1.19)
+3. Open and run the notebook:
+   - jupyter lab DSC212_Karate_Modularity.ipynb
+   - or
+   - jupyter notebook DSC212_Karate_Modularity.ipynb
 
-matplotlib (>= 3.3)
+   Run all cells in order. The notebook performs the analysis and generates figures and CSV summaries inline and/or as files (the notebook writes its outputs when executed).
 
-Python Version
-Python 3.7 or higher
+## Notes on results and interpretation
 
+- The algorithm accepts only splits that produce a positive modularity gain; therefore the final partition is a greedy, hierarchical modularity-improving decomposition.
+- Nodes that consistently show high centrality measures across iterations are structural cores; nodes whose betweenness increases before a split are frequently bridge-like.
+- Use the notebook visualizations and the per-iteration metrics together to summarize how the network decomposes and how node roles evolve.
+- The method is local and greedy (per split). It is appropriate for pedagogical demonstration and small-to-medium networks; for larger networks you may consider alternative implementations or optimizations.
+
+## Parameters worth adjusting
+
+- Minimum community size before attempting a split (stop_min_size).
+- Minimal ΔQ threshold to avoid accepting splits with negligible improvement.
+- Graph layout seed for reproducible visual placements.
+
+## Reproducibility information
+
+- Recommended Python: 3.9+
+- Key packages are listed in requirements.txt. For full reproducibility include pip freeze output or the exact environment specification when submitting.
+
+## Submission guidance
+
+- The notebook is intended to be self-contained for grading. If your instructor requests exported artifacts (PNG images, CSVs), run the notebook and include those generated files in your submission package per your course instructions.
+
+## References
+
+- Newman, M. E. J. (2006). Modularity and community structure in networks. Proceedings of the National Academy of Sciences.
