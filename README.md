@@ -24,10 +24,11 @@ Implement recursive spectral modularity partitioning from scratch
 text
 .
 ├── DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb  # Main Jupyter notebook
+  ├── iteration_*.png                                  # Community visualization plots (generated)
+  ├── *_evolution.png                                  # Metric evolution plots (generated)
+  └── *_heatmap.png                                   # Metric heatmaps (generated)
 ├── README.md                                        # This file
-├── iteration_*.png                                  # Community visualization plots (generated)
-├── *_evolution.png                                  # Metric evolution plots (generated)
-└── *_heatmap.png                                   # Metric heatmaps (generated)
+
 Requirements
 Python Libraries
 bash
@@ -42,16 +43,4 @@ matplotlib (>= 3.3)
 
 Python Version
 Python 3.7 or higher
-
-How to Run
-Option 1: Jupyter Notebook
-bash
-jupyter notebook DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb
-Then run all cells in order (Cell → Run All)
-
-Option 2: JupyterLab
-bash
-jupyter lab DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb
-Option 3: Google Colab
-Upload the notebook to Goog
 
