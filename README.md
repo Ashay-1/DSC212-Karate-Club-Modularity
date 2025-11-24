@@ -32,9 +32,9 @@ Community detection is a central problem in network science. Modularity measures
    - pip install -r requirements.txt
 
 3. Open and run the notebook:
-   - jupyter lab DSC212_Karate_Modularity.ipynb
+   - jupyter lab DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb
    - or
-   - jupyter notebook DSC212_Karate_Modularity.ipynb
+   - jupyter notebook DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb
 
    Run all cells in order. The notebook performs the analysis and generates figures and CSV summaries inline and/or as files (the notebook writes its outputs when executed).
 
