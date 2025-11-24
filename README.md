@@ -24,9 +24,9 @@ Implement recursive spectral modularity partitioning from scratch
 text
 .
 ├── DSC212_Assignment_Satyam_Vedant_IMS24216.ipynb  # Main Jupyter notebook
-  ├── iteration_*.png                                  # Community visualization plots (generated)
-  ├── *_evolution.png                                  # Metric evolution plots (generated)
-  └── *_heatmap.png                                   # Metric heatmaps (generated)
+  ├── iteration_*.png                                  # Community visualization plots 
+  ├── *_evolution.png                                  # Metric evolution plots
+  └── *_heatmap.png                                   # Metric heatmaps
 ├── README.md                                        # This file
 
 Requirements
